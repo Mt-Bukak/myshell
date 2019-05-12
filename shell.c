@@ -27,8 +27,6 @@ int main(void)
         char *s;
         int len;
         
-
-        
         printf("%s@%s$ ", getpwuid(getuid())->pw_name, hostname);
         s = fgets(command, MAX_LEN_LINE, stdin);
        
