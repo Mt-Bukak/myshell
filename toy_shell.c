@@ -31,18 +31,23 @@ int main(void)
         
         printf("%s@%s$ ", getpwuid(getuid())->pw_name, hostname);
         s = fgets(command, MAX_LEN_LINE, stdin);
+       
         if (s == NULL) {
             fprintf(stderr, "fgets failed\n");
             exit(1);
         }
         
         len = strlen(command);
+        
         printf("%d\n", len);
         if (command[len - 1] == '\n') {
             command[len - 1] = '\0'; 
         }
         
         printf("[%s]\n", command);
+        
+        if (strcmp(command, "exit") == 0)
+            return 0;
       
         pid = fork();
         if (pid < 0) {
